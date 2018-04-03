@@ -2,6 +2,16 @@ const PositiveBitCounter = require('./PositiveBitCounter')
 const assert = require('assert')
 
 describe('PositiveBitCounter', function () {
+
+  // Extra validation to check if input is an integer
+  it('Should return an Error when the supplied value is not an Integer', function () {
+    assert.throws(
+      () => PositiveBitCounter.Count("a"),
+      function isError (error) {
+        return (error instanceof Error)
+      })
+  })
+
   it('Should return a RangeError when a negative value is supplied', function () {
     assert.throws(
       () => PositiveBitCounter.Count(-2),
